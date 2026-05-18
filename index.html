@@ -1,903 +1,933 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pancho — La plataforma que simplifica tu negocio. Hacelo simple. Hacelo con Pancho.">
-  <title>Pancho — Hacelo Simple.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pancho — La plataforma que simplifica tu negocio. Hacelo simple. Hacelo con Pancho.">
 
-    :root {
-      --lima:   #DFFF00;
-      --negro:  #000000;
-      --azul:   #00204A;
-      --papel:  #F5F5F5;
-      --lima-dim: rgba(223,255,0,0.18);
-      --lima-border: rgba(223,255,0,0.35);
-      --lima-border-hover: rgba(223,255,0,0.7);
-    }
+<!-- ✅ FIX: Open Graph / meta para redes sociales -->
+<meta property="og:title" content="Pancho — Hacelo Simple.">
+<meta property="og:description" content="La plataforma que simplifica tu negocio. Automatizá lo complejo, enfocate en lo que importa.">
+<meta property="og:image" content="https://pancho-landing.vercel.app/og-image.png">
+<meta property="og:url" content="https://pancho-landing.vercel.app">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pancho — Hacelo Simple.">
+<meta name="twitter:description" content="La plataforma que simplifica tu negocio.">
 
-    html { scroll-behavior: smooth; }
+<!-- ✅ FIX: Favicon (emoji fallback mientras no haya archivo real) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23DFFF00'/><text y='.9em' font-size='70' x='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='bold'>P</text></svg>">
 
-    body {
-      background: var(--negro);
-      color: var(--papel);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+<title>Pancho — Hacelo Simple.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-    /* ── NAV ── */
-    nav {
-      padding: 1.2rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(223,255,0,0.15);
-      background: rgba(0,0,0,0.96);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(10px);
-    }
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+:root {
+  --lima: #DFFF00;
+  --negro: #000000;
+  --azul: #00204A;
+  --papel: #F5F5F5;
+  --lima-dim: rgba(223,255,0,0.18);
+  --lima-border: rgba(223,255,0,0.35);
+  --lima-border-hover: rgba(223,255,0,0.7);
+}
 
-    /* Logo: círculo lima con P */
-    .logo-mark {
-      width: 36px; height: 36px;
-      background: var(--lima);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      transition: transform .3s;
-    }
-    .logo-mark:hover { transform: scale(1.1); }
-    .logo-mark span {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
-      color: var(--negro);
-      line-height: 1;
-      user-select: none;
-    }
+html { scroll-behavior: smooth; }
 
-    .logo-text {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
-      letter-spacing: 3px;
-      color: var(--papel);
-      line-height: 1;
-    }
-    .logo-text small { display: none; }
+body {
+  background: var(--negro);
+  color: var(--papel);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
 
-    nav ul { list-style: none; display: flex; gap: 2.5rem; }
-    nav ul a {
-      color: rgba(245,245,245,0.55);
-      text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 500;
-      transition: color .25s;
-    }
-    nav ul a:hover { color: var(--lima); }
+/* ── NAV ── */
+nav {
+  padding: 1.2rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(223,255,0,0.15);
+  background: rgba(0,0,0,0.96);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
 
-    .btn-nav {
-      background: var(--lima);
-      border: none;
-      color: var(--negro);
-      padding: .55rem 1.6rem;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      border-radius: 2px;
-      transition: all .25s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn-nav:hover { background: #fff; transform: translateY(-1px); }
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 
-    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--lima); transition: all .3s; }
+.logo-mark {
+  width: 36px; height: 36px;
+  background: var(--lima);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform .3s;
+}
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      padding: 6rem 5%;
-      position: relative;
-      overflow: hidden;
-    }
+.logo-mark:hover { transform: scale(1.1); }
 
-    /* Scanlines sutiles sobre fondo negro */
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 3px,
-        rgba(223,255,0,0.013) 3px,
-        rgba(223,255,0,0.013) 4px
-      );
-      pointer-events: none;
-      z-index: 0;
-    }
+.logo-mark span {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: var(--negro);
+  line-height: 1;
+  user-select: none;
+}
 
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(223,255,0,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(223,255,0,0.05) 1px, transparent 1px);
-      background-size: 56px 56px;
-      opacity: 0.6;
-    }
+.logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 3px;
+  color: var(--papel);
+  line-height: 1;
+}
 
-    /* Glow lima en esquina superior derecha */
-    .hero-glow {
-      position: absolute;
-      top: -120px;
-      right: -80px;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(223,255,0,0.12) 0%, transparent 65%);
-      pointer-events: none;
-    }
+/* ✅ FIX: logo-text small eliminado del HTML, ya no necesita display:none */
 
-    .hero-content { position: relative; max-width: 680px; z-index: 1; }
+nav ul { list-style: none; display: flex; gap: 2.5rem; }
 
-    .tag {
-      font-size: 13px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--lima);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 500;
-    }
-    .tag::before {
-      content: '';
-      display: block;
-      width: 28px;
-      height: 2px;
-      background: var(--lima);
-      flex-shrink: 0;
-    }
+nav ul a {
+  color: rgba(245,245,245,0.55);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color .25s;
+}
 
-    h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(72px, 9.5vw, 136px);
-      font-weight: 400;
-      line-height: 0.93;
-      color: var(--papel);
-      margin-bottom: 1.8rem;
-      letter-spacing: 2px;
-    }
-    h1 .accent {
-      color: var(--lima);
-      display: block;
-      -webkit-text-stroke: 0px;
-    }
-    h1 .outline {
-      -webkit-text-stroke: 2px var(--lima);
-      color: transparent;
-      display: block;
-    }
+nav ul a:hover { color: var(--lima); }
 
-    .hero-sub {
-      font-size: 20px;
-      color: rgba(245,245,245,0.6);
-      max-width: 520px;
-      margin-bottom: 2.5rem;
-      line-height: 1.75;
-      font-weight: 300;
-    }
+.btn-nav {
+  background: var(--lima);
+  border: none;
+  color: var(--negro);
+  padding: .55rem 1.6rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all .25s;
+  text-decoration: none;
+  display: inline-block;
+}
 
-    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.btn-nav:hover { background: #fff; transform: translateY(-1px); }
 
-    .btn-primary {
-      background: var(--lima);
-      color: var(--negro);
-      padding: 1rem 2.5rem;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 700;
-      cursor: pointer;
-      border: 2px solid var(--lima);
-      border-radius: 2px;
-      transition: all .25s;
-      text-decoration: none;
-      display: inline-block;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-primary::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.12);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .25s;
-    }
-    .btn-primary:hover::after { transform: scaleX(1); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(223,255,0,0.3); }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-toggle span { display: block; width: 24px; height: 2px; background: var(--lima); transition: all .3s; }
 
-    .btn-ghost {
-      background: transparent;
-      border: 2px solid rgba(223,255,0,0.3);
-      color: var(--papel);
-      padding: 1rem 2.5rem;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 500;
-      cursor: pointer;
-      border-radius: 2px;
-      transition: all .25s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn-ghost:hover { border-color: var(--lima); color: var(--lima); transform: translateY(-2px); }
+/* ── HERO ── */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 5%;
+  position: relative;
+  overflow: hidden;
+}
 
-    /* ── KPI ORBITAL — reemplazado por aro de métricas lima ── */
-    .kpi-orbital {
-      position: absolute;
-      right: 3%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 480px;
-      height: 480px;
-      z-index: 1;
-    }
-    .kpi-orbital svg { width: 100%; height: 100%; overflow: visible; }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(223,255,0,0.013) 3px,
+    rgba(223,255,0,0.013) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
 
-    /* Anillo exterior pulsa */
-    @keyframes pulse-ring {
-      0%, 100% { opacity: 0.4; r: 148; }
-      50%       { opacity: 0.9; r: 152; }
-    }
-    .pulse-ring { animation: pulse-ring 3s ease-in-out infinite; }
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(223,255,0,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(223,255,0,0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.6;
+}
 
-    /* Burbujas orbitan en sentido horario */
-    @keyframes orbit-cw {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-    @keyframes orbit-ccw {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(-360deg); }
-    }
-    .bubble-group { animation: orbit-cw 14s linear infinite; transform-origin: 180px 180px; }
-    .bubble-inner { animation: orbit-ccw 14s linear infinite; }
+.hero-glow {
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(223,255,0,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
 
-    /* Arco avanza 1/3 de vuelta por cada KPI */
-    @keyframes arc-fill {
-      0%   { stroke-dasharray: 0 452;   stroke-dashoffset: -113; }
-      33%  { stroke-dasharray: 150 452; stroke-dashoffset: -113; }
-      34%  { stroke-dasharray: 0 452;   stroke-dashoffset: -113; }
-      66%  { stroke-dasharray: 150 452; stroke-dashoffset: -113; }
-      67%  { stroke-dasharray: 0 452;   stroke-dashoffset: -113; }
-      100% { stroke-dasharray: 150 452; stroke-dashoffset: -113; }
-    }
-    #kpi-arc {
-      animation: arc-fill 9s ease-in-out infinite;
-      transform: rotate(-90deg);
-      transform-origin: 180px 180px;
-    }
-      0%   { opacity: 0; transform: scale(.8); }
-      60%  { transform: scale(1.04); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-    .kpi-pop { animation: kpi-pop .4s ease forwards; }
+.hero-content { position: relative; max-width: 680px; z-index: 1; }
 
-    /* Línea de rastreo gira lento */
-    @keyframes radar-sweep {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-    .radar-sweep {
-      transform-origin: 180px 180px;
-      animation: radar-sweep 4s linear infinite;
-    }
+.tag {
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--lima);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+}
 
-    /* ── SECCIONES ── */
-    section { padding: 7rem 5%; }
+.tag::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--lima);
+  flex-shrink: 0;
+}
 
-    h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(36px, 4vw, 58px);
-      font-weight: 400;
-      color: var(--papel);
-      line-height: 1;
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
-    }
-    h2 em { font-style: normal; color: var(--lima); }
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 9.5vw, 136px);
+  font-weight: 400;
+  line-height: 0.93;
+  color: var(--papel);
+  margin-bottom: 1.8rem;
+  letter-spacing: 2px;
+}
 
-    .section-lead {
-      font-size: 16px;
-      color: rgba(245,245,245,0.55);
-      max-width: 520px;
-      margin-bottom: 3.5rem;
-      line-height: 1.8;
-      font-weight: 300;
-    }
+h1 .accent {
+  color: var(--lima);
+  display: block;
+  -webkit-text-stroke: 0px;
+}
 
-    /* ── PRICING ── */
-    .pricing { text-align: center; }
-    .pricing .tag { justify-content: center; }
-    .pricing .section-lead { margin-left: auto; margin-right: auto; }
+h1 .outline {
+  -webkit-text-stroke: 2px var(--lima);
+  color: transparent;
+  display: block;
+}
 
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 3.5rem;
-      max-width: 940px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+.hero-sub {
+  font-size: 20px;
+  color: rgba(245,245,245,0.6);
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+  line-height: 1.75;
+  font-weight: 300;
+}
 
-    .plan {
-      border: 2px solid rgba(223,255,0,0.12);
-      padding: 2.5rem 2rem;
-      position: relative;
-      transition: border-color .3s, transform .3s;
-      text-align: left;
-      border-radius: 4px;
-    }
-    .plan:hover { border-color: rgba(223,255,0,0.5); transform: translateY(-4px); }
-    .plan.featured { border-color: var(--lima); background: rgba(223,255,0,0.04); }
+.btn-group { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
 
-    .plan-badge {
-      position: absolute;
-      top: -1px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--lima);
-      color: var(--negro);
-      font-size: 9px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 700;
-      padding: .3rem 1.2rem;
-      white-space: nowrap;
-      border-radius: 0 0 4px 4px;
-      font-family: 'DM Sans', sans-serif;
-    }
+.btn-primary {
+  background: var(--lima);
+  color: var(--negro);
+  padding: 1rem 2.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid var(--lima);
+  border-radius: 2px;
+  transition: all .25s;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
 
-    .plan-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px;
-      letter-spacing: 3px;
-      color: rgba(245,245,245,0.45);
-      margin-bottom: 1rem;
-    }
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.12);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s;
+}
 
-    .plan-price {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 62px;
-      font-weight: 400;
-      color: var(--papel);
-      line-height: 1;
-      letter-spacing: 1px;
-    }
-    .plan-price sup {
-      font-size: 22px;
-      color: var(--lima);
-      vertical-align: top;
-      margin-top: 10px;
-      display: inline-block;
-    }
+.btn-primary:hover::after { transform: scaleX(1); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(223,255,0,0.3); }
 
-    .plan-period {
-      font-size: 11px;
-      color: rgba(245,245,245,0.4);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin: .5rem 0 1.5rem;
-      font-weight: 500;
-    }
+.btn-ghost {
+  background: transparent;
+  border: 2px solid rgba(223,255,0,0.3);
+  color: var(--papel);
+  padding: 1rem 2.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all .25s;
+  text-decoration: none;
+  display: inline-block;
+}
 
-    .plan-features { list-style: none; margin-bottom: 2rem; }
-    .plan-features li {
-      font-size: 13px;
-      color: rgba(245,245,245,0.6);
-      padding: .5rem 0;
-      border-bottom: 1px solid rgba(223,255,0,0.08);
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-      font-weight: 400;
-    }
-    .plan-features li::before { content: '→'; color: var(--lima); font-size: 11px; flex-shrink: 0; }
+.btn-ghost:hover { border-color: var(--lima); color: var(--lima); transform: translateY(-2px); }
 
-    .btn-plan {
-      width: 100%;
-      padding: .9rem;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all .25s;
-      font-weight: 700;
-      border-radius: 2px;
-    }
-    .btn-plan-outline {
-      background: transparent;
-      border: 2px solid rgba(223,255,0,0.2);
-      color: rgba(245,245,245,0.5);
-    }
-    .btn-plan-outline:hover { border-color: var(--lima); color: var(--lima); }
-    .btn-plan-lima {
-      background: var(--lima);
-      border: 2px solid var(--lima);
-      color: var(--negro);
-    }
-    .btn-plan-lima:hover { background: #fff; border-color: #fff; transform: translateY(-1px); }
+/* ── KPI ORBITAL ── */
+.kpi-orbital {
+  position: absolute;
+  right: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 480px;
+  height: 480px;
+  z-index: 1;
+}
 
-    /* ── CTA ── */
-    .cta-section {
-      background: var(--azul);
-      border-top: 2px solid rgba(223,255,0,0.2);
-      border-bottom: 2px solid rgba(223,255,0,0.2);
-      padding: 7rem 5%;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-section::before {
-      content: 'P';
-      position: absolute;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 520px;
-      color: rgba(223,255,0,0.04);
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-    }
-    .cta-section .tag { justify-content: center; position: relative; z-index: 1; }
-    .cta-section h2 { position: relative; z-index: 1; }
-    .cta-section .section-lead { margin: 1rem auto 2.5rem; position: relative; z-index: 1; }
-    .cta-section .btn-group { justify-content: center; position: relative; z-index: 1; }
-    .divider { width: 2px; height: 56px; background: rgba(223,255,0,0.25); margin: 0 auto 3rem; }
+.kpi-orbital svg { width: 100%; height: 100%; overflow: visible; }
 
-    /* ── FOOTER ── */
-    footer {
-      padding: 2.5rem 5%;
-      background: var(--negro);
-      border-top: 1px solid rgba(223,255,0,0.12);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
+@keyframes pulse-ring {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.9; }
+}
 
-    .footer-brand {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 16px;
-      letter-spacing: 3px;
-      color: rgba(245,245,245,0.4);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .footer-brand .logo-mark-sm {
-      width: 22px; height: 22px;
-      background: var(--lima);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .footer-brand .logo-mark-sm span {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 14px;
-      color: var(--negro);
-      line-height: 1;
-    }
-    .footer-brand em { color: var(--lima); font-style: normal; }
+.pulse-ring { animation: pulse-ring 3s ease-in-out infinite; }
 
-    .footer-copy {
-      font-size: 11px;
-      color: rgba(245,245,245,0.3);
-      letter-spacing: 1px;
-      font-weight: 400;
-    }
+@keyframes orbit-cw  { from { transform: rotate(0deg); }   to { transform: rotate(360deg); } }
+@keyframes orbit-ccw { from { transform: rotate(0deg); }   to { transform: rotate(-360deg); } }
 
-    .footer-links { display: flex; gap: 2rem; }
-    .footer-links a {
-      color: rgba(245,245,245,0.35);
-      text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 500;
-      transition: color .25s;
-    }
-    .footer-links a:hover { color: var(--lima); }
+/* ✅ FIX: animation-delay escalonado para que las burbujas se distribuyan visualmente */
+.bubble-group-1 { animation: orbit-cw 14s linear infinite;         transform-origin: 180px 180px; }
+.bubble-group-2 { animation: orbit-cw 14s linear infinite -4.67s;  transform-origin: 180px 180px; }
+.bubble-group-3 { animation: orbit-cw 14s linear infinite -9.33s;  transform-origin: 180px 180px; }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav ul { display: none; }
-      nav ul.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(0,0,0,0.98);
-        padding: 1.5rem 5%;
-        border-bottom: 1px solid rgba(223,255,0,0.15);
-        gap: 1.5rem;
-      }
-      .nav-toggle { display: flex; }
-      .btn-nav { display: none; }
-      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
-      .kpi-orbital { display: none; }
-      footer { flex-direction: column; text-align: center; }
-      .footer-links { justify-content: center; }
-    }
+.bubble-inner-1 { animation: orbit-ccw 14s linear infinite;         }
+.bubble-inner-2 { animation: orbit-ccw 14s linear infinite -4.67s;  }
+.bubble-inner-3 { animation: orbit-ccw 14s linear infinite -9.33s;  }
 
-    /* ── ENTRADA CON FADE ── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+@keyframes arc-fill {
+  0%   { stroke-dasharray:   0 452; stroke-dashoffset: -113; }
+  33%  { stroke-dasharray: 150 452; stroke-dashoffset: -113; }
+  34%  { stroke-dasharray:   0 452; stroke-dashoffset: -113; }
+  66%  { stroke-dasharray: 150 452; stroke-dashoffset: -113; }
+  67%  { stroke-dasharray:   0 452; stroke-dashoffset: -113; }
+  100% { stroke-dasharray: 150 452; stroke-dashoffset: -113; }
+}
 
-    /* ── TICKER STRIP ── */
-    .ticker {
-      background: var(--lima);
-      color: var(--negro);
-      padding: .55rem 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    .ticker-track {
-      display: inline-flex;
-      gap: 0;
-      animation: ticker-scroll 22s linear infinite;
-    }
-    .ticker-item {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 15px;
-      letter-spacing: 3px;
-      padding: 0 2.5rem;
-    }
-    .ticker-sep {
-      font-size: 15px;
-      opacity: 0.4;
-    }
-    @keyframes ticker-scroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-  </style>
+#kpi-arc {
+  animation: arc-fill 9s ease-in-out infinite;
+  transform: rotate(-90deg);
+  transform-origin: 180px 180px;
+}
+
+/* ✅ FIX: @keyframes kpi-pop correctamente declarado */
+@keyframes kpi-pop {
+  0%   { opacity: 0; transform: scale(.8); }
+  60%  { transform: scale(1.04); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.kpi-pop { animation: kpi-pop .4s ease forwards; }
+
+@keyframes radar-sweep {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.radar-sweep {
+  transform-origin: 180px 180px;
+  animation: radar-sweep 4s linear infinite;
+}
+
+/* ── SECCIONES ── */
+section { padding: 7rem 5%; }
+
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 4vw, 58px);
+  font-weight: 400;
+  color: var(--papel);
+  line-height: 1;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+h2 em { font-style: normal; color: var(--lima); }
+
+.section-lead {
+  font-size: 16px;
+  color: rgba(245,245,245,0.55);
+  max-width: 520px;
+  margin-bottom: 3.5rem;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* ── PRICING ── */
+.pricing { text-align: center; }
+.pricing .tag { justify-content: center; }
+.pricing .section-lead { margin-left: auto; margin-right: auto; }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.plan {
+  border: 2px solid rgba(223,255,0,0.12);
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: border-color .3s, transform .3s;
+  text-align: left;
+  border-radius: 4px;
+}
+
+.plan:hover { border-color: rgba(223,255,0,0.5); transform: translateY(-4px); }
+.plan.featured { border-color: var(--lima); background: rgba(223,255,0,0.04); }
+
+.plan-badge {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--lima);
+  color: var(--negro);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: .3rem 1.2rem;
+  white-space: nowrap;
+  border-radius: 0 0 4px 4px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.plan-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: rgba(245,245,245,0.45);
+  margin-bottom: 1rem;
+}
+
+.plan-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 62px;
+  font-weight: 400;
+  color: var(--papel);
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.plan-price sup {
+  font-size: 22px;
+  color: var(--lima);
+  vertical-align: top;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.plan-period {
+  font-size: 11px;
+  color: rgba(245,245,245,0.4);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: .5rem 0 1.5rem;
+  font-weight: 500;
+}
+
+.plan-features { list-style: none; margin-bottom: 2rem; }
+
+.plan-features li {
+  font-size: 13px;
+  color: rgba(245,245,245,0.6);
+  padding: .5rem 0;
+  border-bottom: 1px solid rgba(223,255,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-weight: 400;
+}
+
+.plan-features li::before { content: '→'; color: var(--lima); font-size: 11px; flex-shrink: 0; }
+
+/* ✅ FIX: btn-plan ahora es <a>, pero mantenemos estilos compatibles */
+.btn-plan {
+  display: block;
+  width: 100%;
+  padding: .9rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .25s;
+  font-weight: 700;
+  border-radius: 2px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-plan-outline {
+  background: transparent;
+  border: 2px solid rgba(223,255,0,0.2);
+  color: rgba(245,245,245,0.5);
+}
+
+.btn-plan-outline:hover { border-color: var(--lima); color: var(--lima); }
+
+.btn-plan-lima {
+  background: var(--lima);
+  border: 2px solid var(--lima);
+  color: var(--negro);
+}
+
+.btn-plan-lima:hover { background: #fff; border-color: #fff; transform: translateY(-1px); }
+
+/* ── CTA ── */
+.cta-section {
+  background: var(--azul);
+  border-top: 2px solid rgba(223,255,0,0.2);
+  border-bottom: 2px solid rgba(223,255,0,0.2);
+  padding: 7rem 5%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: 'P';
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 520px;
+  color: rgba(223,255,0,0.04);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cta-section .tag { justify-content: center; position: relative; z-index: 1; }
+.cta-section h2 { position: relative; z-index: 1; }
+.cta-section .section-lead { margin: 1rem auto 2.5rem; position: relative; z-index: 1; }
+.cta-section .btn-group { justify-content: center; position: relative; z-index: 1; }
+
+.divider { width: 2px; height: 56px; background: rgba(223,255,0,0.25); margin: 0 auto 3rem; }
+
+/* ── FOOTER ── */
+footer {
+  padding: 2.5rem 5%;
+  background: var(--negro);
+  border-top: 1px solid rgba(223,255,0,0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 3px;
+  color: rgba(245,245,245,0.4);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-brand .logo-mark-sm {
+  width: 22px; height: 22px;
+  background: var(--lima);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.footer-brand .logo-mark-sm span {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  color: var(--negro);
+  line-height: 1;
+}
+
+.footer-brand em { color: var(--lima); font-style: normal; }
+
+.footer-copy {
+  font-size: 11px;
+  color: rgba(245,245,245,0.3);
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.footer-links { display: flex; gap: 2rem; }
+
+.footer-links a {
+  color: rgba(245,245,245,0.35);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color .25s;
+}
+
+.footer-links a:hover { color: var(--lima); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav ul { display: none; }
+
+  nav ul.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.98);
+    padding: 1.5rem 5%;
+    border-bottom: 1px solid rgba(223,255,0,0.15);
+    gap: 1.5rem;
+  }
+
+  .nav-toggle { display: flex; }
+  .btn-nav { display: none; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+  .kpi-orbital { display: none; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+
+/* ── FADE ENTRANCE ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── TICKER STRIP ── */
+.ticker {
+  background: var(--lima);
+  color: var(--negro);
+  padding: .55rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: inline-flex;
+  gap: 0;
+  animation: ticker-scroll 22s linear infinite;
+}
+
+.ticker-item {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 3px;
+  padding: 0 2.5rem;
+}
+
+.ticker-sep {
+  font-size: 15px;
+  opacity: 0.4;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">
-      <div class="logo-mark"><span>P</span></div>
-      <div class="logo-text">PANCHO <small>Estrategia de Marca 2026</small></div>
-    </a>
-    <ul id="nav-menu">
-      <li><a href="#planes">Planes</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
-      <span></span><span></span><span></span>
-    </button>
-    <a href="#planes" class="btn-nav">Empezar ahora</a>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-mark"><span>P</span></div>
+    <!-- ✅ FIX: <small> con display:none eliminado -->
+    <div class="logo-text">PANCHO</div>
+  </a>
+  <ul id="nav-menu">
+    <li><a href="#planes">Planes</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="#planes" class="btn-nav">Empezar ahora</a>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-grid"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-content">
-      <div class="tag">La herramienta que simplifica tu negocio</div>
-      <h1>
-        HACELO
-        <span class="accent">SIMPLE.</span>
-        <span class="outline">HACELO CON</span>
-        PANCHO.
-      </h1>
-      <p class="hero-sub">
-        Pancho automatiza lo complejo para que vos te enfoques en lo que importa. Menos fricción, más resultados. Simple así.
-      </p>
-      <div class="btn-group">
-        <a href="#planes" class="btn-primary">Probalo gratis 14 días</a>
-        <a href="#contacto" class="btn-ghost">¿Cómo funciona?</a>
-      </div>
-    </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
 
-    <!-- KPI ORBITAL — radar lima -->
-    <div class="kpi-orbital" aria-label="Métricas clave">
-      <svg viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg" id="kpi-svg">
-        <defs>
-          <pattern id="dot-grid" width="36" height="36" patternUnits="userSpaceOnUse">
-            <circle cx="1" cy="1" r="1" fill="rgba(223,255,0,0.1)"/>
-          </pattern>
-          <radialGradient id="center-grad" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#00204A" stop-opacity="0.95"/>
-            <stop offset="100%" stop-color="#000" stop-opacity="0.8"/>
-          </radialGradient>
-          <filter id="lima-glow">
-            <feGaussianBlur stdDeviation="5" result="blur"/>
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-
-        <!-- Fondo de puntos -->
-        <rect width="360" height="360" fill="url(#dot-grid)"/>
-
-        <!-- Anillos concéntricos estáticos -->
-        <circle cx="180" cy="180" r="80"  stroke="rgba(223,255,0,0.06)" stroke-width="1" fill="none"/>
-        <circle cx="180" cy="180" r="118" stroke="rgba(223,255,0,0.06)" stroke-width="1" fill="none"/>
-
-        <!-- Anillo exterior pulsante -->
-        <circle class="pulse-ring" cx="180" cy="180" r="148"
-          stroke="rgba(223,255,0,0.22)" stroke-width="1.5" fill="none"/>
-
-        <!-- Línea de barrido tipo radar -->
-        <g class="radar-sweep">
-          <line x1="180" y1="180" x2="180" y2="32"
-            stroke="rgba(223,255,0,0.6)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="180" y1="180" x2="180" y2="100"
-            stroke="rgba(223,255,0,0.3)" stroke-width="6" stroke-linecap="round"/>
-          <!-- Cono de barrido -->
-          <path d="M 180 180 L 150 42 A 148 148 0 0 1 210 42 Z"
-            fill="rgba(223,255,0,0.04)"/>
-        </g>
-
-        <!-- Líneas hacia burbujas (estáticas, decorativas) -->
-        <g opacity="0.35">
-          <line x1="180" y1="180" x2="180" y2="32" stroke="rgba(223,255,0,0.4)" stroke-width="1" stroke-dasharray="4 4"/>
-          <line x1="180" y1="180" x2="305" y2="254" stroke="rgba(223,255,0,0.4)" stroke-width="1" stroke-dasharray="4 4"/>
-          <line x1="180" y1="180" x2="55" y2="254" stroke="rgba(223,255,0,0.4)" stroke-width="1" stroke-dasharray="4 4"/>
-        </g>
-
-        <!-- Burbujas orbitando -->
-        <!-- Burbuja 1: arriba -->
-        <g class="bubble-group" style="transform-origin:180px 180px">
-          <g class="bubble-inner" style="transform-origin:180px 32px">
-            <circle cx="180" cy="32" r="40"
-              fill="rgba(0,0,0,0.9)" stroke="rgba(223,255,0,0.5)" stroke-width="1.5"/>
-            <circle cx="180" cy="32" r="35"
-              fill="none" stroke="rgba(223,255,0,0.1)" stroke-width="1"/>
-            <text x="180" y="28" font-family="Bebas Neue, sans-serif" font-size="20" font-weight="400"
-              fill="#DFFF00" text-anchor="middle" dominant-baseline="middle">98%</text>
-            <text x="180" y="43" font-family="DM Sans, sans-serif" font-size="7" font-weight="500"
-              fill="rgba(245,245,245,0.55)" text-anchor="middle" letter-spacing="2">PRECISIÓN</text>
-          </g>
-        </g>
-
-        <!-- Burbuja 2: abajo-derecha -->
-        <g class="bubble-group" style="transform-origin:180px 180px">
-          <g class="bubble-inner" style="transform-origin:305px 254px">
-            <circle cx="305" cy="254" r="40"
-              fill="rgba(0,0,0,0.9)" stroke="rgba(223,255,0,0.5)" stroke-width="1.5"/>
-            <circle cx="305" cy="254" r="35"
-              fill="none" stroke="rgba(223,255,0,0.1)" stroke-width="1"/>
-            <text x="305" y="250" font-family="Bebas Neue, sans-serif" font-size="20" font-weight="400"
-              fill="#DFFF00" text-anchor="middle" dominant-baseline="middle">10×</text>
-            <text x="305" y="265" font-family="DM Sans, sans-serif" font-size="7" font-weight="500"
-              fill="rgba(245,245,245,0.55)" text-anchor="middle" letter-spacing="2">MÁS RÁPIDO</text>
-          </g>
-        </g>
-
-        <!-- Burbuja 3: abajo-izquierda -->
-        <g class="bubble-group" style="transform-origin:180px 180px">
-          <g class="bubble-inner" style="transform-origin:55px 254px">
-            <circle cx="55" cy="254" r="40"
-              fill="rgba(0,0,0,0.9)" stroke="rgba(223,255,0,0.5)" stroke-width="1.5"/>
-            <circle cx="55" cy="254" r="35"
-              fill="none" stroke="rgba(223,255,0,0.1)" stroke-width="1"/>
-            <text x="55" y="250" font-family="Bebas Neue, sans-serif" font-size="20" font-weight="400"
-              fill="#DFFF00" text-anchor="middle" dominant-baseline="middle">−80%</text>
-            <text x="55" y="265" font-family="DM Sans, sans-serif" font-size="7" font-weight="500"
-              fill="rgba(245,245,245,0.55)" text-anchor="middle" letter-spacing="2">TIEMPO OP.</text>
-          </g>
-        </g>
-
-        <!-- Centro -->
-        <circle cx="180" cy="180" r="72" fill="url(#center-grad)"
-          stroke="rgba(223,255,0,0.45)" stroke-width="2" filter="url(#lima-glow)"/>
-        <circle cx="180" cy="180" r="62" fill="none"
-          stroke="rgba(223,255,0,0.1)" stroke-width="1" stroke-dasharray="3 3"/>
-
-        <!-- Logo P en el centro -->
-        <circle cx="180" cy="180" r="28" fill="#DFFF00"/>
-        <text x="180" y="181" font-family="Bebas Neue, sans-serif" font-size="34"
-          fill="#000000" text-anchor="middle" dominant-baseline="middle">P</text>
-
-        <!-- KPI rotante debajo del logo -->
-        <g id="kpi-center">
-          <text id="kpi-num" x="180" y="228" font-family="Bebas Neue, sans-serif" font-size="28"
-            fill="#DFFF00" text-anchor="middle" dominant-baseline="middle">98%</text>
-          <text id="kpi-label" x="180" y="246" font-family="DM Sans, sans-serif" font-size="8" font-weight="500"
-            fill="rgba(245,245,245,0.5)" text-anchor="middle" letter-spacing="2">PRECISIÓN</text>
-        </g>
-
-        <!-- Arco de progreso -->
-        <circle id="kpi-arc" cx="180" cy="180" r="72"
-          fill="none" stroke="#DFFF00" stroke-width="2.5" stroke-linecap="round"
-          stroke-dasharray="0 452" stroke-dashoffset="-113"/>
-
-      </svg>
-    </div>
-  </section>
-
-  <!-- TICKER -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track" id="ticker-track">
-      <span class="ticker-item">HACELO SIMPLE</span><span class="ticker-sep">✦</span>
-      <span class="ticker-item">HACELO CON PANCHO</span><span class="ticker-sep">✦</span>
-      <span class="ticker-item">AUTOMATIZÁ TU NEGOCIO</span><span class="ticker-sep">✦</span>
-      <span class="ticker-item">ESTRATEGIA DE MARCA 2026</span><span class="ticker-sep">✦</span>
-      <span class="ticker-item">MÁS SIMPLE. MÁS RÁPIDO.</span><span class="ticker-sep">✦</span>
-      <span class="ticker-item">HACELO SIMPLE</span><span class="ticker-sep">✦</span>
-      <span class="ticker-item">HACELO CON PANCHO</span><span class="ticker-sep">✦</span>
-      <span class="ticker-item">AUTOMATIZÁ TU NEGOCIO</span><span class="ticker-sep">✦</span>
-      <span class="ticker-item">ESTRATEGIA DE MARCA 2026</span><span class="ticker-sep">✦</span>
-      <span class="ticker-item">MÁS SIMPLE. MÁS RÁPIDO.</span><span class="ticker-sep">✦</span>
+  <div class="hero-content">
+    <div class="tag">La herramienta que simplifica tu negocio</div>
+    <h1>
+      HACELO
+      <span class="accent">SIMPLE.</span>
+      <span class="outline">HACELO CON</span>
+      PANCHO.
+    </h1>
+    <p class="hero-sub">
+      Pancho automatiza lo complejo para que vos te enfoques en lo que importa. Menos fricción, más resultados. Simple así.
+    </p>
+    <div class="btn-group">
+      <a href="#planes" class="btn-primary">Probalo gratis 14 días</a>
+      <a href="#contacto" class="btn-ghost">¿Cómo funciona?</a>
     </div>
   </div>
 
-  <!-- PRICING -->
-  <section id="planes" class="pricing">
-    <div class="tag">Planes</div>
-    <h2>Precios <em>directos</em></h2>
-    <p class="section-lead">Sin letra chica ni costos escondidos. Empezá gratis y escalá cuando quieras.</p>
-    <div class="pricing-grid">
+  <!-- KPI ORBITAL — radar lima -->
+  <!-- ✅ FIX: role="img" agregado para accesibilidad -->
+  <div class="kpi-orbital" role="img" aria-label="Métricas clave: 98% precisión, 10× más rápido, −80% tiempo operativo">
+    <svg viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg" id="kpi-svg">
+      <defs>
+        <pattern id="dot-grid" width="36" height="36" patternUnits="userSpaceOnUse">
+          <circle cx="1" cy="1" r="1" fill="rgba(223,255,0,0.1)"/>
+        </pattern>
+        <radialGradient id="center-grad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#00204A" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#000" stop-opacity="0.8"/>
+        </radialGradient>
+        <filter id="lima-glow">
+          <feGaussianBlur stdDeviation="5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
 
-      <div class="plan fade-up">
-        <div class="plan-name">Pro</div>
-        <div class="plan-price"><sup>$</sup>24</div>
-        <div class="plan-period">USD / mes</div>
-        <ul class="plan-features">
-          <li>50 facturas/mes</li>
-          <li>1 usuario</li>
-          <li>Exportación CSV y Excel</li>
-          <li>Soporte por mail</li>
-        </ul>
-        <button class="btn-plan btn-plan-outline">Empezar gratis</button>
-      </div>
+      <rect width="360" height="360" fill="url(#dot-grid)"/>
 
-      <div class="plan featured fade-up" style="transition-delay:.12s">
-        <div class="plan-badge">Más elegido</div>
-        <div class="plan-name">Max</div>
-        <div class="plan-price"><sup>$</sup>49</div>
-        <div class="plan-period">USD / mes</div>
-        <ul class="plan-features">
-          <li>100 facturas/mes</li>
-          <li>1 usuario admin</li>
-          <li>Hasta 3 usuarios colaboradores</li>
-          <li>Exportación CSV y Excel</li>
-          <li>Soporte por mail</li>
-        </ul>
-        <button class="btn-plan btn-plan-lima">Empezar ahora</button>
-      </div>
+      <circle cx="180" cy="180" r="80"  stroke="rgba(223,255,0,0.06)" stroke-width="1" fill="none"/>
+      <circle cx="180" cy="180" r="118" stroke="rgba(223,255,0,0.06)" stroke-width="1" fill="none"/>
+      <circle class="pulse-ring" cx="180" cy="180" r="148" stroke="rgba(223,255,0,0.22)" stroke-width="1.5" fill="none"/>
 
-      <div class="plan fade-up" style="transition-delay:.24s">
-        <div class="plan-name">Total</div>
-        <div class="plan-price"><sup>$</sup>59</div>
-        <div class="plan-period">USD / mes</div>
-        <ul class="plan-features">
-          <li>200 facturas/mes</li>
-          <li>1 usuario admin</li>
-          <li>Hasta 5 usuarios colaboradores</li>
-          <li>Exportación CSV y Excel</li>
-          <li>Módulo de pago a proveedores</li>
-          <li>Set up inicial gratis</li>
-          <li>Soporte por mail</li>
-        </ul>
-        <button class="btn-plan btn-plan-outline">Hablar con ventas</button>
-      </div>
+      <g class="radar-sweep">
+        <line x1="180" y1="180" x2="180" y2="32"  stroke="rgba(223,255,0,0.6)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="180" y1="180" x2="180" y2="100" stroke="rgba(223,255,0,0.3)" stroke-width="6"   stroke-linecap="round"/>
+        <path d="M 180 180 L 150 42 A 148 148 0 0 1 210 42 Z" fill="rgba(223,255,0,0.04)"/>
+      </g>
 
+      <g opacity="0.35">
+        <line x1="180" y1="180" x2="180" y2="32"   stroke="rgba(223,255,0,0.4)" stroke-width="1" stroke-dasharray="4 4"/>
+        <line x1="180" y1="180" x2="305" y2="254"  stroke="rgba(223,255,0,0.4)" stroke-width="1" stroke-dasharray="4 4"/>
+        <line x1="180" y1="180" x2="55"  y2="254"  stroke="rgba(223,255,0,0.4)" stroke-width="1" stroke-dasharray="4 4"/>
+      </g>
+
+      <!-- ✅ FIX: cada burbuja tiene su propia clase con animation-delay escalonado -->
+      <!-- Burbuja 1: arriba (delay 0) -->
+      <g class="bubble-group-1">
+        <g class="bubble-inner-1" style="transform-origin:180px 32px">
+          <circle cx="180" cy="32" r="40" fill="rgba(0,0,0,0.9)" stroke="rgba(223,255,0,0.5)" stroke-width="1.5"/>
+          <circle cx="180" cy="32" r="35" fill="none" stroke="rgba(223,255,0,0.1)" stroke-width="1"/>
+          <text x="180" y="28" font-family="Bebas Neue, sans-serif" font-size="20" fill="#DFFF00" text-anchor="middle" dominant-baseline="middle">98%</text>
+          <text x="180" y="43" font-family="DM Sans, sans-serif" font-size="7" font-weight="500" fill="rgba(245,245,245,0.55)" text-anchor="middle" letter-spacing="2">PRECISIÓN</text>
+        </g>
+      </g>
+
+      <!-- Burbuja 2: abajo-derecha (delay -4.67s) -->
+      <g class="bubble-group-2">
+        <g class="bubble-inner-2" style="transform-origin:305px 254px">
+          <circle cx="305" cy="254" r="40" fill="rgba(0,0,0,0.9)" stroke="rgba(223,255,0,0.5)" stroke-width="1.5"/>
+          <circle cx="305" cy="254" r="35" fill="none" stroke="rgba(223,255,0,0.1)" stroke-width="1"/>
+          <text x="305" y="250" font-family="Bebas Neue, sans-serif" font-size="20" fill="#DFFF00" text-anchor="middle" dominant-baseline="middle">10×</text>
+          <text x="305" y="265" font-family="DM Sans, sans-serif" font-size="7" font-weight="500" fill="rgba(245,245,245,0.55)" text-anchor="middle" letter-spacing="2">MÁS RÁPIDO</text>
+        </g>
+      </g>
+
+      <!-- Burbuja 3: abajo-izquierda (delay -9.33s) -->
+      <g class="bubble-group-3">
+        <g class="bubble-inner-3" style="transform-origin:55px 254px">
+          <circle cx="55" cy="254" r="40" fill="rgba(0,0,0,0.9)" stroke="rgba(223,255,0,0.5)" stroke-width="1.5"/>
+          <circle cx="55" cy="254" r="35" fill="none" stroke="rgba(223,255,0,0.1)" stroke-width="1"/>
+          <text x="55" y="250" font-family="Bebas Neue, sans-serif" font-size="20" fill="#DFFF00" text-anchor="middle" dominant-baseline="middle">−80%</text>
+          <text x="55" y="265" font-family="DM Sans, sans-serif" font-size="7" font-weight="500" fill="rgba(245,245,245,0.55)" text-anchor="middle" letter-spacing="2">TIEMPO OP.</text>
+        </g>
+      </g>
+
+      <circle cx="180" cy="180" r="72" fill="url(#center-grad)" stroke="rgba(223,255,0,0.45)" stroke-width="2" filter="url(#lima-glow)"/>
+      <circle cx="180" cy="180" r="62" fill="none" stroke="rgba(223,255,0,0.1)" stroke-width="1" stroke-dasharray="3 3"/>
+
+      <circle cx="180" cy="180" r="28" fill="#DFFF00"/>
+      <text x="180" y="181" font-family="Bebas Neue, sans-serif" font-size="34" fill="#000000" text-anchor="middle" dominant-baseline="middle">P</text>
+
+      <g id="kpi-center">
+        <text id="kpi-num"   x="180" y="228" font-family="Bebas Neue, sans-serif" font-size="28" fill="#DFFF00" text-anchor="middle" dominant-baseline="middle">98%</text>
+        <text id="kpi-label" x="180" y="246" font-family="DM Sans, sans-serif" font-size="8" font-weight="500" fill="rgba(245,245,245,0.5)" text-anchor="middle" letter-spacing="2">PRECISIÓN</text>
+      </g>
+
+      <circle id="kpi-arc" cx="180" cy="180" r="72"
+        fill="none" stroke="#DFFF00" stroke-width="2.5" stroke-linecap="round"
+        stroke-dasharray="0 452" stroke-dashoffset="-113"/>
+    </svg>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item">HACELO SIMPLE</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">HACELO CON PANCHO</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">AUTOMATIZÁ TU NEGOCIO</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">ESTRATEGIA DE MARCA 2026</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">MÁS SIMPLE. MÁS RÁPIDO.</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">HACELO SIMPLE</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">HACELO CON PANCHO</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">AUTOMATIZÁ TU NEGOCIO</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">ESTRATEGIA DE MARCA 2026</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">MÁS SIMPLE. MÁS RÁPIDO.</span><span class="ticker-sep">✦</span>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section id="planes" class="pricing">
+  <div class="tag">Planes</div>
+  <h2>Precios <em>directos</em></h2>
+  <p class="section-lead">Sin letra chica ni costos escondidos. Empezá gratis y escalá cuando quieras.</p>
+
+  <div class="pricing-grid">
+
+    <div class="plan fade-up">
+      <div class="plan-name">Pro</div>
+      <div class="plan-price"><sup>$</sup>24</div>
+      <div class="plan-period">USD / mes</div>
+      <ul class="plan-features">
+        <li>50 facturas/mes</li>
+        <li>1 usuario</li>
+        <li>Exportación CSV y Excel</li>
+        <li>Soporte por mail</li>
+      </ul>
+      <!-- ✅ FIX: <button> sin acción reemplazado por <a> con destino real -->
+      <a href="#contacto" class="btn-plan btn-plan-outline">Empezar gratis</a>
     </div>
-  </section>
 
-  <!-- CTA -->
-  <section class="cta-section" id="contacto">
-    <div class="divider"></div>
-    <div class="tag">Empezá hoy</div>
-    <h2>¿Listo para hacerlo<br><em>simple con Pancho?</em></h2>
-    <p class="section-lead">14 días gratis, sin tarjeta de crédito. Configuración en menos de 10 minutos.</p>
-    <div class="btn-group">
-      <a href="#" class="btn-primary">Crear cuenta gratuita</a>
-      <a href="https://wa.me/3364297328" class="btn-ghost">Hablar con un asesor</a>
+    <div class="plan featured fade-up" style="transition-delay:.12s">
+      <div class="plan-badge">Más elegido</div>
+      <div class="plan-name">Max</div>
+      <div class="plan-price"><sup>$</sup>49</div>
+      <div class="plan-period">USD / mes</div>
+      <ul class="plan-features">
+        <li>100 facturas/mes</li>
+        <li>1 usuario admin</li>
+        <li>Hasta 3 usuarios colaboradores</li>
+        <li>Exportación CSV y Excel</li>
+        <li>Soporte por mail</li>
+      </ul>
+      <a href="#contacto" class="btn-plan btn-plan-lima">Empezar ahora</a>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <a href="#" class="footer-brand">
-      <div class="logo-mark-sm"><span>P</span></div>
-      PANCHO — <em>by Engine Consulting</em>
-    </a>
-    <p class="footer-copy">© 2026 Engine Consulting. Todos los derechos reservados.</p>
-    <nav class="footer-links" aria-label="Footer">
-      <a href="#">Privacidad</a>
-      <a href="#">Términos</a>
-      <a href="https://www.engineconsulting.com.ar">Engine Consulting</a>
-    </nav>
-  </footer>
+    <div class="plan fade-up" style="transition-delay:.24s">
+      <div class="plan-name">Total</div>
+      <div class="plan-price"><sup>$</sup>59</div>
+      <div class="plan-period">USD / mes</div>
+      <ul class="plan-features">
+        <li>200 facturas/mes</li>
+        <li>1 usuario admin</li>
+        <li>Hasta 5 usuarios colaboradores</li>
+        <li>Exportación CSV y Excel</li>
+        <li>Módulo de pago a proveedores</li>
+        <li>Set up inicial gratis</li>
+        <li>Soporte por mail</li>
+      </ul>
+      <!-- ✅ FIX: apunta a WhatsApp para "hablar con ventas" -->
+      <a href="https://wa.me/543364297328" class="btn-plan btn-plan-outline">Hablar con ventas</a>
+    </div>
 
-  <script>
-    // Nav mobile
-    const toggle = document.getElementById('nav-toggle');
-    const menu = document.getElementById('nav-menu');
-    toggle.addEventListener('click', () => menu.classList.toggle('open'));
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+  </div>
+</section>
 
-    // Scroll fade-up
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('visible');
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+<!-- CTA -->
+<section class="cta-section" id="contacto">
+  <div class="divider"></div>
+  <div class="tag">Empezá hoy</div>
+  <h2>¿Listo para hacerlo<br><em>simple con Pancho?</em></h2>
+  <p class="section-lead">14 días gratis, sin tarjeta de crédito. Configuración en menos de 10 minutos.</p>
+  <div class="btn-group">
+    <a href="#planes" class="btn-primary">Crear cuenta gratuita</a>
+    <!-- ✅ FIX: código de país +54 (Argentina) agregado al número de WhatsApp -->
+    <a href="https://wa.me/543364297328" class="btn-ghost">Hablar con un asesor</a>
+  </div>
+</section>
 
-    // KPI orbital — ciclo de centro
-    const kpis = [
-      { num: '98%',   label: 'PRECISIÓN'  },
-      { num: '10×',   label: 'MÁS RÁPIDO' },
-      { num: '−80%',  label: 'TIEMPO OP.' },
-    ];
-    const circumference = 452;
-    let current = 0;
-    const numEl   = document.getElementById('kpi-num');
-    const labelEl = document.getElementById('kpi-label');
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-brand">
+    <div class="logo-mark-sm"><span>P</span></div>
+    PANCHO — <em>by Engine Consulting</em>
+  </a>
+  <p class="footer-copy">© 2026 Engine Consulting. Todos los derechos reservados.</p>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="#">Privacidad</a>
+    <a href="#">Términos</a>
+    <a href="https://www.engineconsulting.com.ar">Engine Consulting</a>
+  </nav>
+</footer>
 
-    function updateKPI(idx) {
-      const k = kpis[idx];
-      numEl.style.opacity = labelEl.style.opacity = '0';
-      numEl.style.transition = labelEl.style.transition = 'opacity .2s';
+<script>
+  // Nav mobile
+  const toggle = document.getElementById('nav-toggle');
+  const menu   = document.getElementById('nav-menu');
+  toggle.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
 
-      setTimeout(() => {
-        numEl.textContent   = k.num;
-        labelEl.textContent = k.label;
-        numEl.style.opacity = labelEl.style.opacity = '1';
-        numEl.classList.remove('kpi-pop');
-        void numEl.offsetWidth;
-        numEl.classList.add('kpi-pop');
-      }, 220);
-    }
+  // Scroll fade-up
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    setInterval(() => {
-      current = (current + 1) % kpis.length;
-      updateKPI(current);
-    }, 3000);
-  </script>
+  // KPI orbital — ciclo de centro
+  const kpis = [
+    { num: '98%',  label: 'PRECISIÓN'   },
+    { num: '10×',  label: 'MÁS RÁPIDO'  },
+    { num: '−80%', label: 'TIEMPO OP.'  },
+  ];
+
+  let current   = 0;
+  const numEl   = document.getElementById('kpi-num');
+  const labelEl = document.getElementById('kpi-label');
+
+  function updateKPI(idx) {
+    const k = kpis[idx];
+    numEl.style.opacity = labelEl.style.opacity = '0';
+    numEl.style.transition = labelEl.style.transition = 'opacity .2s';
+    setTimeout(() => {
+      numEl.textContent   = k.num;
+      labelEl.textContent = k.label;
+      numEl.style.opacity = labelEl.style.opacity = '1';
+      // ✅ FIX: @keyframes kpi-pop ahora está declarado, este código funciona correctamente
+      numEl.classList.remove('kpi-pop');
+      void numEl.offsetWidth; // fuerza reflow para reiniciar animación
+      numEl.classList.add('kpi-pop');
+    }, 220);
+  }
+
+  setInterval(() => {
+    current = (current + 1) % kpis.length;
+    updateKPI(current);
+  }, 3000);
+</script>
+
 </body>
 </html>
