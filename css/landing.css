@@ -1,0 +1,317 @@
+/* ============================================================
+   PANCHO — landing.css
+   Estilos específicos de index.html
+   ============================================================ */
+
+/* ── HERO ── */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 5%;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 3px,
+    rgba(223,255,0,0.013) 3px, rgba(223,255,0,0.013) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(223,255,0,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(223,255,0,0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.6;
+}
+.hero-glow {
+  position: absolute;
+  top: -120px; right: -80px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(223,255,0,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-content { position: relative; max-width: 680px; z-index: 1; }
+
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 9.5vw, 136px);
+  font-weight: 400;
+  line-height: 0.93;
+  color: var(--papel);
+  margin-bottom: 1.8rem;
+  letter-spacing: 2px;
+}
+h1 .accent { color: var(--lima); display: block; }
+h1 .outline { -webkit-text-stroke: 2px var(--lima); color: transparent; display: block; }
+
+.hero-sub {
+  font-size: 20px;
+  color: rgba(245,245,245,0.6);
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+  line-height: 1.75;
+  font-weight: 300;
+}
+.btn-group { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+/* ── KPI ORBITAL ── */
+.kpi-orbital {
+  position: absolute;
+  right: 3%; top: 50%;
+  transform: translateY(-50%);
+  width: 480px; height: 480px;
+  z-index: 1;
+}
+.kpi-orbital svg { width: 100%; height: 100%; overflow: visible; }
+
+@keyframes pulse-ring {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.9; }
+}
+.pulse-ring { animation: pulse-ring 3s ease-in-out infinite; }
+
+@keyframes orbit-cw  { from { transform: rotate(0deg);   } to { transform: rotate(360deg);  } }
+@keyframes orbit-ccw { from { transform: rotate(0deg);   } to { transform: rotate(-360deg); } }
+
+.bubble-group-1 { animation: orbit-cw 14s linear infinite;        transform-origin: 180px 180px; }
+.bubble-group-2 { animation: orbit-cw 14s linear infinite -4.67s; transform-origin: 180px 180px; }
+.bubble-group-3 { animation: orbit-cw 14s linear infinite -9.33s; transform-origin: 180px 180px; }
+.bubble-inner-1 { animation: orbit-ccw 14s linear infinite;        }
+.bubble-inner-2 { animation: orbit-ccw 14s linear infinite -4.67s; }
+.bubble-inner-3 { animation: orbit-ccw 14s linear infinite -9.33s; }
+
+@keyframes arc-fill {
+  0%    { stroke-dasharray:   0 452; }
+  28%   { stroke-dasharray: 150 452; }
+  33%   { stroke-dasharray: 452 452; }
+  34%   { stroke-dasharray:   0 452; }
+  61%   { stroke-dasharray: 150 452; }
+  66%   { stroke-dasharray: 452 452; }
+  67%   { stroke-dasharray:   0 452; }
+  94%   { stroke-dasharray: 150 452; }
+  99%   { stroke-dasharray: 452 452; }
+  100%  { stroke-dasharray:   0 452; }
+}
+#kpi-arc {
+  animation: arc-fill 9s linear infinite;
+  transform: rotate(-90deg);
+  transform-origin: 180px 180px;
+}
+
+@keyframes kpi-pop {
+  0%   { opacity: 0; transform: scale(.8); }
+  60%  { transform: scale(1.04); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.kpi-pop { animation: kpi-pop .4s ease forwards; }
+
+@keyframes radar-sweep {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.radar-sweep { transform-origin: 180px 180px; animation: radar-sweep 4s linear infinite; }
+
+/* ── SECCIONES ── */
+section { padding: 7rem 5%; }
+
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 4vw, 58px);
+  font-weight: 400;
+  color: var(--papel);
+  line-height: 1;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+h2 em { font-style: normal; color: var(--lima); }
+
+.section-lead {
+  font-size: 16px;
+  color: rgba(245,245,245,0.55);
+  max-width: 520px;
+  margin-bottom: 3.5rem;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* ── PRICING ── */
+.pricing { text-align: center; }
+.pricing .tag { justify-content: center; }
+.pricing .section-lead { margin-left: auto; margin-right: auto; }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.plan {
+  border: 2px solid rgba(223,255,0,0.12);
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: border-color .3s, transform .3s;
+  text-align: left;
+  border-radius: 4px;
+}
+.plan:hover { border-color: rgba(223,255,0,0.5); transform: translateY(-4px); }
+.plan.featured { border-color: var(--lima); background: rgba(223,255,0,0.04); }
+
+.plan-badge {
+  position: absolute;
+  top: -1px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--lima);
+  color: var(--negro);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: .3rem 1.2rem;
+  white-space: nowrap;
+  border-radius: 0 0 4px 4px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.plan-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: rgba(245,245,245,0.45);
+  margin-bottom: 1rem;
+}
+.plan-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 62px;
+  font-weight: 400;
+  color: var(--papel);
+  line-height: 1;
+  letter-spacing: 1px;
+}
+.plan-price sup {
+  font-size: 22px;
+  color: var(--lima);
+  vertical-align: top;
+  margin-top: 10px;
+  display: inline-block;
+}
+.plan-period {
+  font-size: 11px;
+  color: rgba(245,245,245,0.4);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: .5rem 0 1.5rem;
+  font-weight: 500;
+}
+.plan-features { list-style: none; margin-bottom: 2rem; }
+.plan-features li {
+  font-size: 13px;
+  color: rgba(245,245,245,0.6);
+  padding: .5rem 0;
+  border-bottom: 1px solid rgba(223,255,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-weight: 400;
+}
+.plan-features li::before { content: '→'; color: var(--lima); font-size: 11px; flex-shrink: 0; }
+
+.btn-plan {
+  display: block;
+  width: 100%;
+  padding: .9rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .25s;
+  font-weight: 700;
+  border-radius: 2px;
+  text-align: center;
+  text-decoration: none;
+}
+.btn-plan-outline {
+  background: transparent;
+  border: 2px solid rgba(223,255,0,0.2);
+  color: rgba(245,245,245,0.5);
+}
+.btn-plan-outline:hover { border-color: var(--lima); color: var(--lima); }
+.btn-plan-lima {
+  background: var(--lima);
+  border: 2px solid var(--lima);
+  color: var(--negro);
+}
+.btn-plan-lima:hover { background: #fff; border-color: #fff; transform: translateY(-1px); }
+
+/* ── CTA ── */
+.cta-section {
+  background: var(--azul);
+  border-top: 2px solid rgba(223,255,0,0.2);
+  border-bottom: 2px solid rgba(223,255,0,0.2);
+  padding: 7rem 5%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: 'P';
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 520px;
+  color: rgba(223,255,0,0.04);
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.cta-section .tag    { justify-content: center; position: relative; z-index: 1; }
+.cta-section h2      { position: relative; z-index: 1; }
+.cta-section .section-lead { margin: 1rem auto 2.5rem; position: relative; z-index: 1; }
+.cta-section .btn-group    { justify-content: center; position: relative; z-index: 1; }
+
+.divider { width: 2px; height: 56px; background: rgba(223,255,0,0.25); margin: 0 auto 3rem; }
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--lima);
+  color: var(--negro);
+  padding: .55rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-track {
+  display: inline-flex;
+  animation: ticker-scroll 22s linear infinite;
+}
+.ticker-item {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 3px;
+  padding: 0 2.5rem;
+}
+.ticker-sep { font-size: 15px; opacity: 0.4; }
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+  .kpi-orbital  { display: none; }
+}

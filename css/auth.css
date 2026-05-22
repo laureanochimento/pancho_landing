@@ -1,0 +1,259 @@
+/* ============================================================
+   PANCHO — auth.css
+   Estilos compartidos: login.html y register.html
+   ============================================================ */
+
+html, body { min-height: 100%; }
+
+/* ── BACK LINK (nav de auth) ── */
+.nav-back {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,245,245,0.45);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .25s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-back:hover { color: var(--lima); }
+.nav-back::before { content: '←'; font-size: 14px; }
+
+/* ── LAYOUT ── */
+.page {
+  min-height: calc(100vh - 65px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+/* ── FORM BOX ── */
+.form-box { width: 100%; }
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  letter-spacing: 3px;
+  color: var(--papel);
+  margin-bottom: .3rem;
+}
+
+.form-subtitle {
+  font-size: 14px;
+  color: rgba(245,245,245,0.45);
+  font-weight: 300;
+}
+.form-subtitle a {
+  color: var(--lima);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity .25s;
+}
+.form-subtitle a:hover { opacity: .7; }
+
+/* ── GOOGLE BUTTON ── */
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: .9rem 1.5rem;
+  background: var(--papel);
+  color: #1a1a1a;
+  border: none;
+  border-radius: 3px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  cursor: pointer;
+  transition: all .25s;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+.btn-google:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(223,255,0,0.15);
+}
+.google-icon { width: 20px; height: 20px; flex-shrink: 0; }
+
+/* ── DIVIDER ── */
+.divider-or {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.divider-or::before, .divider-or::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(223,255,0,0.12);
+}
+.divider-or span {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,245,245,0.3);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ── FIELDS ── */
+.fields-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.field { margin-bottom: 1rem; }
+.field label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,245,245,0.45);
+  font-weight: 600;
+  margin-bottom: .45rem;
+}
+.field input {
+  width: 100%;
+  background: #0a0a0a;
+  border: 1.5px solid rgba(223,255,0,0.12);
+  color: var(--papel);
+  padding: .85rem 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 3px;
+  outline: none;
+  transition: border-color .25s;
+}
+.field input::placeholder { color: rgba(245,245,245,0.2); }
+.field input:focus { border-color: rgba(223,255,0,0.5); }
+
+/* ── FUERZA CONTRASEÑA ── */
+.password-strength { margin-top: .4rem; display: flex; gap: 4px; }
+.strength-bar {
+  height: 3px;
+  flex: 1;
+  background: rgba(223,255,0,0.1);
+  border-radius: 2px;
+  transition: background .3s;
+}
+.strength-bar.active-weak   { background: #ff4444; }
+.strength-bar.active-medium { background: #ffaa00; }
+.strength-bar.active-strong { background: var(--lima); }
+.strength-label {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: rgba(245,245,245,0.35);
+  margin-top: .3rem;
+  text-align: right;
+}
+
+/* ── RECORDARME / OLVIDÉ ── */
+.field-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: .25rem 0 1.5rem;
+}
+.field-row label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(245,245,245,0.45);
+  cursor: pointer;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.field-row input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--lima);
+  cursor: pointer;
+}
+.field-row a {
+  font-size: 12px;
+  color: rgba(223,255,0,0.7);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .25s;
+}
+.field-row a:hover { color: var(--lima); }
+
+/* ── SUBMIT ── */
+.btn-submit {
+  width: 100%;
+  padding: .95rem;
+  background: var(--lima);
+  color: var(--negro);
+  border: none;
+  border-radius: 3px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .25s;
+  margin-top: .5rem;
+  margin-bottom: 1rem;
+}
+.btn-submit:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(223,255,0,0.25);
+}
+
+/* ── TÉRMINOS / FOOTER ── */
+.terms-note {
+  font-size: 11px;
+  color: rgba(245,245,245,0.35);
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+.terms-note a {
+  color: rgba(223,255,0,0.7);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .25s;
+}
+.terms-note a:hover { color: var(--lima); }
+
+.form-footer {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(245,245,245,0.4);
+}
+.form-footer a {
+  color: var(--lima);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ── HONEYPOT — oculto visualmente y para lectores ── */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+  tab-index: -1;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 480px) {
+  .fields-row { grid-template-columns: 1fr; }
+  .form-title { font-size: 42px; }
+  .form-box { max-width: 100%; }
+}
